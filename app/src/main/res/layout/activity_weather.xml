@@ -6,10 +6,10 @@
     android:background="@color/colorPrimary">
 
     <ImageView
-        android:id="@+id/bing_pic_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:background="@drawable/day_clearsky"/>
 
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer_layout"
