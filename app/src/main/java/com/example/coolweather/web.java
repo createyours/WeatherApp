@@ -27,7 +27,7 @@ public class web extends AppCompatActivity {
 
         webView=(WebView) findViewById(R.id.webview);
 
-        webView.loadUrl("http://www.cntour.cn/");//加载url
+        webView.loadUrl("http://www.cthy.com/");//加载url
 
         webChromeClient=new WebChromeClient(){
             //获取网页标题
