@@ -1,1 +1,1 @@
-# CoolWeather
+# WeatherApp
