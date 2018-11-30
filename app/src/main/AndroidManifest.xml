@@ -18,12 +18,20 @@
             </intent-filter>
         </activity>
         <activity android:name=".WeatherActivity" />
-        <activity android:name=".web"/>
+        <activity android:name=".web" />
 
         <service
             android:name=".service.AutoUpdateService"
             android:enabled="true"
             android:exported="true" />
+
+        <receiver
+            android:name=".notification.AlarmReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".NotificationActivity" />
+        <activity android:name=".SetActivity"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,29 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+
+
+    <TextView
+        android:layout_below="@+id/buttone_time"
+        android:id="@+id/show_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+    <TimePicker
+        android:id="@+id/timePic1"
+        android:timePickerMode="spinner"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"/>
+    <Button
+        android:id="@+id/buttone_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/timePic1"
+        android:text="设置此时提醒查看天气"/>
+
+</RelativeLayout>

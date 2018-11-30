@@ -42,7 +42,7 @@ public class WeatherActivity extends AppCompatActivity {
 
     private TextView titleCity;
 
-    private TextView titleUpdateTime;
+   // private TextView titleUpdateTime;
 
     private TextView degreeText;
 
@@ -62,6 +62,8 @@ public class WeatherActivity extends AppCompatActivity {
 
     private String mWeatherId;
 
+    private Button setButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +77,7 @@ public class WeatherActivity extends AppCompatActivity {
         // 初始化各控件
         weatherLayout = (ScrollView) findViewById(R.id.weather_layout);
         titleCity = (TextView) findViewById(R.id.title_city);
-        titleUpdateTime = (TextView) findViewById(R.id.title_update_time);
+        //titleUpdateTime = (TextView) findViewById(R.id.title_update_time);
         degreeText = (TextView) findViewById(R.id.degree_text);
         weatherInfoText = (TextView) findViewById(R.id.weather_info_text);
         forecastLayout = (LinearLayout) findViewById(R.id.forecast_layout);
@@ -88,6 +90,20 @@ public class WeatherActivity extends AppCompatActivity {
         swipeRefresh.setColorSchemeResources(R.color.colorPrimary);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navButton = (Button) findViewById(R.id.nav_button);
+
+        setButton = (Button)findViewById(R.id.set_button);
+
+        setButton.setOnClickListener(new View.OnClickListener() {//设置按钮
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WeatherActivity.this,SetActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
+
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String weatherString = prefs.getString("weather", null);
         if (weatherString != null) {
@@ -167,7 +183,7 @@ public class WeatherActivity extends AppCompatActivity {
         String degree = weather.now.temperature + "℃";
         String weatherInfo = weather.now.more.info;
         titleCity.setText(cityName);
-        titleUpdateTime.setText(updateTime);
+        //titleUpdateTime.setText(updateTime);
         degreeText.setText(degree);
         weatherInfoText.setText(weatherInfo);
         forecastLayout.removeAllViews();
