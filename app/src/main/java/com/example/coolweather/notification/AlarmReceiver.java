@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
+import com.example.coolweather.MainActivity;
 import com.example.coolweather.NotificationActivity;
 import com.example.coolweather.R;
 
@@ -18,7 +19,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         if (intent.getAction().equals("NOTIFICATION")) {
             NotificationManager manager = (NotificationManager) context
                     .getSystemService(Context.NOTIFICATION_SERVICE);
-            Intent intent2 = new Intent(context,NotificationActivity.class);
+            Intent intent2 = new Intent(context,MainActivity.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent2, 0);
             Notification notify = new NotificationCompat.Builder(context,"two")
                     .setSmallIcon(R.drawable.alarm_tick)

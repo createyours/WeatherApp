@@ -30,6 +30,7 @@ public class NotificationActivity extends AppCompatActivity {
 
     private TimePicker timePick1;
     private Button buttone1;
+    private Calendar c = Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,13 +63,13 @@ public class NotificationActivity extends AppCompatActivity {
 
 
 
-        Calendar c = Calendar.getInstance();
+        c = Calendar.getInstance();
         System.out.println("Current time => "+c.getTime());
 
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String formattedDate = df.format(c.getTime());
         // formattedDate have current date/time
-        Toast.makeText(this, formattedDate, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, formattedDate, Toast.LENGTH_SHORT).show();
 
 
         // Now we display formattedDate value in TextView
@@ -98,6 +99,13 @@ public class NotificationActivity extends AppCompatActivity {
         buttone1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                /*int h = timePick1.getHour();
+                int m = timePick1.getMinute();
+                String hour = String.valueOf(h);
+                String minut = String.valueOf(m);
+                System.out.println("现在是"+hour+"时"+minut+"分");*/
+
                 System.out.println("设置的时间为"+timePick1.getHour()+"时"+timePick1.getMinute()+"分");
                 String time = timePick1.getHour()+"时"+timePick1.getMinute()+"分通知查看天气";
                 Toast.makeText(NotificationActivity.this,time,Toast.LENGTH_SHORT).show();
@@ -126,10 +134,30 @@ public class NotificationActivity extends AppCompatActivity {
                 int type = AlarmManager.RTC_WAKEUP;
                 //new Date()：表示当前日期，可以根据项目需求替换成所求日期
                 //getTime()：日期的该方法同样可以表示从1970年1月1日0点至今所经历的毫秒数
-                long triggerAtMillis = new Date().getTime();
-                long intervalMillis = 1000 * 5;
+
+               /* int year =c.get(Calendar.YEAR);
+                int month=c.get(Calendar.MONTH)+1;//特殊的是Calendar中月份从0开始计数，所以加1得到常规月份
+                int day=c.get(Calendar.DAY_OF_MONTH);
+                int h = timePick1.getHour();
+                int m = timePick1.getMinute();*/
+
+                int h1=timePick1.getCurrentHour();
+                int m1=timePick1.getCurrentMinute();
+
+               int h = new Date().getHours();
+               int m = new Date().getMinutes();
+
+               long between = (h1-h)*60*60+(m1-m)*60;
+                System.out.println("间隔："+between);
+                System.out.println(new Date().getTime());
+
+
+                long triggerAtMillis = new Date().getTime() +(between*1000);
+                System.out.println(triggerAtMillis);
+                long intervalMillis = 24*60*60*1000;
+
                 manager.setInexactRepeating(type, triggerAtMillis, intervalMillis, pi);
-                Toast.makeText(NotificationActivity.this,"将在五秒后发送通知",Toast.LENGTH_SHORT).show();
+                Toast.makeText(NotificationActivity.this,"每日通知设置完成",Toast.LENGTH_SHORT).show();
 
             }
         });
