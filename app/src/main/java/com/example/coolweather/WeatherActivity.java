@@ -196,6 +196,15 @@ public class WeatherActivity extends AppCompatActivity {
         weatherLayout.setVisibility(View.VISIBLE);
         Intent intent = new Intent(this, AutoUpdateService.class);
         startService(intent);
+
+        Button tourButton=(Button) findViewById(R.id.tour_Button);
+        tourButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1=new Intent(WeatherActivity.this,web.class);
+                startActivity(intent1);
+            }
+        });
     }
 
 }
